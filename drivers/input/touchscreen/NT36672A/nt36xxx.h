@@ -40,7 +40,7 @@
 #include <linux/platform_data/spi-mt65xx.h>
 #endif
 
-#define NVT_DEBUG 1
+#define NVT_DEBUG 0
 #define NVT_LOCKDOWN 1
 //---GPIO number---
 #define NVTTOUCH_RST_PIN 980
@@ -60,12 +60,8 @@ void nvt_lockdown_proc_deinit(void);
 //---SPI driver info.---
 #define NVT_SPI_NAME "NVT-ts"
 
-#if NVT_DEBUG
-#define NVT_LOG(fmt, args...)    pr_err("[%s] %s %d: " fmt, NVT_SPI_NAME, __func__, __LINE__, ##args)
-#else
-#define NVT_LOG(fmt, args...)    pr_info("[%s] %s %d: " fmt, NVT_SPI_NAME, __func__, __LINE__, ##args)
-#endif
-#define NVT_ERR(fmt, args...)    pr_err("[%s] %s %d: " fmt, NVT_SPI_NAME, __func__, __LINE__, ##args)
+#define NVT_LOG(fmt, args...) ((void)0)
+#define NVT_ERR(fmt, args...) ((void)0)
 
 //---Input device info.---
 #define NVT_TS_NAME "NVTCapacitiveTouchScreen"
