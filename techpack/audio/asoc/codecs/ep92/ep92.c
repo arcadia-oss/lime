@@ -180,7 +180,7 @@ static ssize_t debugfs_codec_write_op(struct file *filp,
 	}
 	if (rc == 0) {
 		rc = cnt;
-		dev_info(component->dev, "%s: reg[0x%02X]=0x%02X\n",
+		dev_dbg(component->dev, "%s: reg[0x%02X]=0x%02X\n",
 			__func__, param[0], param[1]);
 		snd_soc_component_write(component, param[0], param[1]);
 	} else {
@@ -667,7 +667,7 @@ static void ep92_init(struct snd_soc_component *component,
 	reg2 = snd_soc_component_read32(component, EP92_BI_VERSION_DATE);
 	reg3 = snd_soc_component_read32(component, EP92_BI_VERSION_NUM);
 
-	dev_info(compoent->dev, "ep92 version info %02d/%02d/%02d %d\n",
+	dev_dbg(compoent->dev, "ep92 version info %02d/%02d/%02d %d\n",
 		reg0, reg1, reg2, reg3);
 
 	/* update the format information in mixer controls */
@@ -784,7 +784,7 @@ void ep92_poll_status(struct timer_list *t)
 	/* on interrupt, start polling for some time */
 	if (ep92->poll_trig) {
 		if (ep92->poll_rem == 0)
-			dev_info(component->dev, "status checking activated\n");
+			dev_dbg(component->dev, "status checking activated\n");
 
 		ep92->poll_trig = 0;
 		ep92->poll_rem = EP92_POLL_RUNOUT_MSEC;
@@ -802,7 +802,7 @@ void ep92_poll_status(struct timer_list *t)
 			if (ep92->poll_rem > EP92_POLL_INTERVAL_OFF_MSEC) {
 				ep92->poll_rem -= EP92_POLL_INTERVAL_OFF_MSEC;
 			} else {
-				dev_info(component->dev, "status checking stopped\n");
+				dev_dbg(component->dev, "status checking stopped\n");
 				ep92->poll_rem = 0;
 			}
 		}

@@ -71,7 +71,7 @@ static int msm_cdc_dt_parse_vreg_info(struct device *dev,
 		cdc_vreg->lpm_supported = prop_val;
 	}
 
-	dev_info(dev, "%s: %s: vol=[%d %d]uV, curr=[%d]uA, ond %d lpm %d\n",
+	dev_dbg(dev, "%s: %s: vol=[%d %d]uV, curr=[%d]uA, ond %d lpm %d\n",
 		 __func__, cdc_vreg->name, cdc_vreg->min_uV, cdc_vreg->max_uV,
 		 cdc_vreg->optimum_uA, cdc_vreg->ondemand,
 		 cdc_vreg->lpm_supported);

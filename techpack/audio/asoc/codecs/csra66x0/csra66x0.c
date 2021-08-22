@@ -408,7 +408,7 @@ static ssize_t debugfs_codec_write_op(struct file *filp,
 	if (rc == 0)
 	{
 		rc = cnt;
-		dev_info(component->dev, "%s: reg[0x%04X]=0x%02X\n",
+		dev_dbg(component->dev, "%s: reg[0x%04X]=0x%02X\n",
 			__func__, param[0], param[1]);
 		snd_soc_component_write(component, param[0], param[1]);
 	} else {
@@ -1321,7 +1321,7 @@ static int csra66x0_i2c_probe(struct i2c_client *client_i2c,
 			client_i2c->dev.of_node, "qcom,csra-cluster",
 			&csra66x0->in_cluster);
 		if (ret) {
-			dev_info(&client_i2c->dev,
+			dev_dbg(&client_i2c->dev,
 			"%s: qcom,csra-cluster property not defined in DT\n", __func__);
 			csra66x0->in_cluster = 0;
 		}
@@ -1330,7 +1330,7 @@ static int csra66x0_i2c_probe(struct i2c_client *client_i2c,
 			client_i2c->dev.of_node, "qcom,csra-cluster-master",
 			&csra66x0->is_master);
 		if (ret) {
-			dev_info(&client_i2c->dev,
+			dev_dbg(&client_i2c->dev,
 			"%s: qcom,csra-cluster-master property not defined in DT, slave assumed\n",
 			__func__);
 			csra66x0->is_master = 0;
@@ -1371,7 +1371,7 @@ static int csra66x0_i2c_probe(struct i2c_client *client_i2c,
 				client_i2c->dev.of_node, "irq-active-low",
 				&csra66x0->irq_active_low);
 			if (ret) {
-				dev_info(&client_i2c->dev,
+				dev_dbg(&client_i2c->dev,
 				"%s: irq-active-low property not defined in DT\n", __func__);
 				csra66x0->irq_active_low = 0;
 			}

@@ -1094,11 +1094,11 @@ static int wcd9xxx_i2c_probe(struct i2c_client *client,
 			of_id = of_match_device(wcd9xxx_of_match, &client->dev);
 			if (of_id) {
 				wcd9xxx->type = *((int *)of_id->data);
-				dev_info(&client->dev, "%s: codec type is %d\n",
+				dev_dbg(&client->dev, "%s: codec type is %d\n",
 					 __func__, wcd9xxx->type);
 			}
 		} else {
-			dev_info(&client->dev, "%s: dev.of_node is NULL, default to WCD9XXX\n",
+			dev_dbg(&client->dev, "%s: dev.of_node is NULL, default to WCD9XXX\n",
 				 __func__);
 			wcd9xxx->type = WCD9XXX;
 		}
@@ -1327,7 +1327,7 @@ static int wcd9xxx_slim_probe(struct slim_device *slim)
 		slim->dev.platform_data = pdata;
 
 	} else {
-		dev_info(&slim->dev, "Platform data from board file\n");
+		dev_dbg(&slim->dev, "Platform data from board file\n");
 		pdata = slim->dev.platform_data;
 	}
 
@@ -1358,7 +1358,7 @@ static int wcd9xxx_slim_probe(struct slim_device *slim)
 	}
 
 	wcd9xxx->type = device_id->driver_data;
-	dev_info(&slim->dev, "%s: probing for wcd type: %d, name: %s\n",
+	dev_dbg(&slim->dev, "%s: probing for wcd type: %d, name: %s\n",
 		 __func__, wcd9xxx->type, device_id->name);
 
 	/* wcd9xxx members init */
@@ -1528,7 +1528,7 @@ static int wcd9xxx_device_up(struct wcd9xxx *wcd9xxx)
 	int ret = 0;
 	struct wcd9xxx_core_resource *wcd9xxx_res = &wcd9xxx->core_res;
 
-	dev_info(wcd9xxx->dev, "%s: codec bring up\n", __func__);
+	dev_dbg(wcd9xxx->dev, "%s: codec bring up\n", __func__);
 	wcd9xxx_bringup(wcd9xxx->dev);
 	ret = wcd9xxx_irq_init(wcd9xxx_res);
 	if (ret) {
@@ -1550,7 +1550,7 @@ static int wcd9xxx_slim_device_reset(struct slim_device *sldev)
 		return -EINVAL;
 	}
 
-	dev_info(wcd9xxx->dev, "%s: device reset, dev_up = %d\n",
+	dev_dbg(wcd9xxx->dev, "%s: device reset, dev_up = %d\n",
 		__func__, wcd9xxx->dev_up);
 	if (wcd9xxx->dev_up)
 		return 0;
@@ -1573,7 +1573,7 @@ static int wcd9xxx_slim_device_up(struct slim_device *sldev)
 		pr_err("%s: wcd9xxx is NULL\n", __func__);
 		return -EINVAL;
 	}
-	dev_info(wcd9xxx->dev, "%s: slim device up, dev_up = %d\n",
+	dev_dbg(wcd9xxx->dev, "%s: slim device up, dev_up = %d\n",
 		__func__, wcd9xxx->dev_up);
 	if (wcd9xxx->dev_up)
 		return 0;
@@ -1596,7 +1596,7 @@ static int wcd9xxx_slim_device_down(struct slim_device *sldev)
 		return -EINVAL;
 	}
 
-	dev_info(wcd9xxx->dev, "%s: device down, dev_up = %d\n",
+	dev_dbg(wcd9xxx->dev, "%s: device down, dev_up = %d\n",
 		__func__, wcd9xxx->dev_up);
 	if (!wcd9xxx->dev_up)
 		return 0;

@@ -1076,7 +1076,7 @@ static int wdsp_mgr_bind(struct device *dev)
 	/* Setup ramdump device */
 	wdsp->dump_data.rd_dev = create_ramdump_device("wdsp", dev);
 	if (!wdsp->dump_data.rd_dev)
-		dev_info(dev, "%s: create_ramdump_device failed\n", __func__);
+		dev_dbg(dev, "%s: create_ramdump_device failed\n", __func__);
 
 	ret = component_bind_all(dev, wdsp->ops);
 	if (ret < 0) {

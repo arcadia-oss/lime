@@ -1537,7 +1537,7 @@ static int wsa881x_swr_probe(struct swr_device *pdev)
 				__func__);
 		}
 	} else {
-		dev_info(&pdev->dev, "%s: bolero node not found\n", __func__);
+		dev_dbg(&pdev->dev, "%s: bolero node not found\n", __func__);
 	}
 
 	mutex_init(&wsa881x->res_lock);

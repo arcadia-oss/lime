@@ -128,7 +128,7 @@ static int wcd9335_bring_up(struct wcd9xxx *wcd9xxx)
 		return -EINVAL;
 	}
 	if ((val & 0x80) && (byte0 == 0x0)) {
-		dev_info(wcd9xxx->dev, "%s: wcd9335 codec version is v1.1\n",
+		dev_dbg(wcd9xxx->dev, "%s: wcd9335 codec version is v1.1\n",
 			 __func__);
 		regmap_write(wcd_regmap, WCD9335_CODEC_RPM_RST_CTL, 0x01);
 		regmap_write(wcd_regmap, WCD9335_SIDO_SIDO_CCL_2, 0xFC);
@@ -141,7 +141,7 @@ static int wcd9335_bring_up(struct wcd9xxx *wcd9xxx)
 			     0x3);
 		regmap_write(wcd_regmap, WCD9335_CODEC_RPM_RST_CTL, 0x3);
 	} else if (byte0 == 0x1) {
-		dev_info(wcd9xxx->dev, "%s: wcd9335 codec version is v2.0\n",
+		dev_dbg(wcd9xxx->dev, "%s: wcd9335 codec version is v2.0\n",
 			 __func__);
 		regmap_write(wcd_regmap, WCD9335_CODEC_RPM_RST_CTL, 0x01);
 		regmap_write(wcd_regmap, WCD9335_SIDO_SIDO_TEST_2, 0x00);
@@ -155,7 +155,7 @@ static int wcd9335_bring_up(struct wcd9xxx *wcd9xxx)
 			     0x3);
 		regmap_write(wcd_regmap, WCD9335_CODEC_RPM_RST_CTL, 0x3);
 	} else if ((byte0 == 0) && (!(val & 0x80))) {
-		dev_info(wcd9xxx->dev, "%s: wcd9335 codec version is v1.0\n",
+		dev_dbg(wcd9xxx->dev, "%s: wcd9335 codec version is v1.0\n",
 			 __func__);
 		regmap_write(wcd_regmap, WCD9335_CODEC_RPM_RST_CTL, 0x01);
 		regmap_write(wcd_regmap, WCD9335_SIDO_SIDO_CCL_2, 0xFC);
@@ -207,7 +207,7 @@ static int wcd9335_get_cdc_info(struct wcd9xxx *wcd9xxx,
 	if (rc)
 		return -EINVAL;
 
-	dev_info(wcd9xxx->dev, "%s: wcd9xxx chip id major 0x%x, minor 0x%x\n",
+	dev_dbg(wcd9xxx->dev, "%s: wcd9xxx chip id major 0x%x, minor 0x%x\n",
 		 __func__, id_major, id_minor);
 
 	/* Version detection */
@@ -332,7 +332,7 @@ static int wcd934x_get_cdc_info(struct wcd9xxx *wcd9xxx,
 	if (rc)
 		return -EINVAL;
 
-	dev_info(wcd9xxx->dev, "%s: wcd9xxx chip id major 0x%x, minor 0x%x\n",
+	dev_dbg(wcd9xxx->dev, "%s: wcd9xxx chip id major 0x%x, minor 0x%x\n",
 		 __func__, id_major, id_minor);
 
 	if (id_major != TAVIL_MAJOR)

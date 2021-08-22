@@ -318,7 +318,7 @@ static void aqt1000_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb1_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias1 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias1 DT property not found\n",
 			__func__);
 	}
 

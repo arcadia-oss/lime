@@ -535,7 +535,7 @@ static int wcd_cntl_clocks_disable(struct wcd_dsp_cntl *cntl)
 
 	WCD_CNTL_MUTEX_LOCK(component, cntl->clk_mutex);
 	if (!cntl->is_clk_enabled) {
-		dev_info(component->dev, "%s: clocks already disabled\n",
+		dev_dbg(component->dev, "%s: clocks already disabled\n",
 			__func__);
 		goto done;
 	}
@@ -855,7 +855,7 @@ static irqreturn_t wcd_cntl_err_irq(int irq, void *data)
 				WCD934X_CPE_SS_SS_ERROR_INT_STATUS_0B);
 	status = status | (reg_val << 8);
 
-	dev_info(component->dev, "%s: error interrupt status = 0x%x\n",
+	dev_dbg(component->dev, "%s: error interrupt status = 0x%x\n",
 		__func__, status);
 
 	if ((status & cntl->irqs.fatal_irqs) &&
@@ -1170,7 +1170,7 @@ static int wcd_control_init(struct device *dev, void *priv_data)
 	 */
 	if (wcd9xxx_request_irq(core_res, cntl->irqs.cpe_err_irq,
 				wcd_cntl_err_irq, "CPE ERR", cntl))
-		dev_info(component->dev, "%s: Failed request_irq(cpe_err_irq)",
+		dev_dbg(component->dev, "%s: Failed request_irq(cpe_err_irq)",
 			__func__);
 	else
 		err_irq_requested = true;

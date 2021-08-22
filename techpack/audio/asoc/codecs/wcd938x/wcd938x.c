@@ -1680,7 +1680,7 @@ static int wcd938x_codec_enable_adc(struct snd_soc_dapm_widget *w,
 		ret = wcd938x_tx_channel_config(component, w->shift, 1);
 		mode = wcd938x_get_adc_mode(wcd938x->tx_mode[w->shift]);
 		if (mode < 0) {
-			dev_info(component->dev,
+			dev_dbg(component->dev,
 				 "%s: invalid mode, setting to normal mode\n",
 				 __func__);
 			mode = ADC_MODE_VAL_NORMAL;
@@ -2302,14 +2302,14 @@ static int wcd938x_rx_hph_mode_put(struct snd_kcontrol *kcontrol,
 
 	if (wcd938x->variant == WCD9380) {
 		if (mode_val == CLS_H_HIFI || mode_val == CLS_AB_HIFI) {
-			dev_info(component->dev,
+			dev_dbg(component->dev,
 				"%s:Invalid HPH Mode, default to CLS_H_ULP\n",
 				__func__);
 			mode_val = CLS_H_ULP;
 		}
 	}
 	if (mode_val == CLS_H_NORMAL) {
-		dev_info(component->dev,
+		dev_dbg(component->dev,
 			"%s:Invalid HPH Mode, default to class_AB\n",
 			__func__);
 		mode_val = CLS_H_ULP;
@@ -3281,7 +3281,7 @@ static int wcd938x_soc_codec_probe(struct snd_soc_component *component)
 	int variant;
 	int ret = -EINVAL;
 
-	dev_info(component->dev, "%s()\n", __func__);
+	dev_dbg(component->dev, "%s()\n", __func__);
 	wcd938x = snd_soc_component_get_drvdata(component);
 
 	if (!wcd938x)
@@ -3514,7 +3514,7 @@ static void wcd938x_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb1_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias1 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias1 DT property not found\n",
 			__func__);
 	}
 
@@ -3527,7 +3527,7 @@ static void wcd938x_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb2_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias2 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias2 DT property not found\n",
 			__func__);
 	}
 
@@ -3540,7 +3540,7 @@ static void wcd938x_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb3_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias3 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias3 DT property not found\n",
 			__func__);
 	}
 
@@ -3553,7 +3553,7 @@ static void wcd938x_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb4_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias4 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias4 DT property not found\n",
 			__func__);
 	}
 }

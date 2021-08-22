@@ -175,7 +175,7 @@ static int wcd_cpe_get_sfr_dump(struct wcd_cpe_core *core)
 		goto free_sfr_dump;
 	}
 
-	dev_info(core->dev,
+	dev_dbg(core->dev,
 		 "%s: cpe_sfr = %s\n", __func__, sfr_dump);
 
 free_sfr_dump:
@@ -808,7 +808,7 @@ static int wcd_cpe_check_new_image(struct wcd_cpe_core *core)
 				"%s: Failed to re-dload image %s, err = %d\n",
 				__func__, core->fname, rc);
 	} else {
-		dev_info(core->dev, "%s: fw changed to %s\n",
+		dev_dbg(core->dev, "%s: fw changed to %s\n",
 			 __func__, core->fname);
 	}
 done:
@@ -1111,7 +1111,7 @@ int wcd_cpe_ssr_event(void *core_handle,
 	 * CPE needs to be ignored
 	 */
 	if (core->ssr_type == WCD_CPE_INITIALIZED) {
-		dev_info(core->dev,
+		dev_dbg(core->dev,
 			"%s: CPE initialized but not enabled, skip CPE ssr\n",
 			 __func__);
 		return 0;

@@ -741,7 +741,7 @@ void *tavil_get_afe_config(struct snd_soc_component *component,
 	case AFE_CDC_REGISTER_PAGE_CONFIG:
 		return &tavil_cdc_reg_page_cfg;
 	default:
-		dev_info(component->dev, "%s: Unknown config_type 0x%x\n",
+		dev_dbg(component->dev, "%s: Unknown config_type 0x%x\n",
 			__func__, config_type);
 		return NULL;
 	}
@@ -9872,7 +9872,7 @@ static irqreturn_t tavil_misc_irq(int irq, void *data)
 		    &misc_val);
 
 	if (misc_val & 0x08) {
-		dev_info(tavil->dev, "%s: irq: %d, DSD DC detected!\n",
+		dev_dbg(tavil->dev, "%s: irq: %d, DSD DC detected!\n",
 			 __func__, irq);
 		/* DSD DC interrupt, reset DSD path */
 		tavil_dsd_reset(tavil->dsd_config);
@@ -10112,13 +10112,13 @@ static int tavil_handle_pdata(struct tavil_priv *tavil,
 
 	if (pdata->dmic_sample_rate ==
 	    WCD9XXX_DMIC_SAMPLE_RATE_UNDEFINED) {
-		dev_info(component->dev, "%s: dmic_rate invalid default = %d\n",
+		dev_dbg(component->dev, "%s: dmic_rate invalid default = %d\n",
 			__func__, def_dmic_rate);
 		pdata->dmic_sample_rate = def_dmic_rate;
 	}
 	if (pdata->mad_dmic_sample_rate ==
 	    WCD9XXX_DMIC_SAMPLE_RATE_UNDEFINED) {
-		dev_info(component->dev, "%s: mad_dmic_rate invalid default = %d\n",
+		dev_dbg(component->dev, "%s: mad_dmic_rate invalid default = %d\n",
 			__func__, def_dmic_rate);
 		/*
 		 * use dmic_sample_rate as the default for MAD
@@ -10464,7 +10464,7 @@ static int tavil_soc_codec_probe(struct snd_soc_component *component)
 
 	snd_soc_component_init_regmap(component, control->regmap);
 
-	dev_info(component->dev, "%s()\n", __func__);
+	dev_dbg(component->dev, "%s()\n", __func__);
 	tavil = snd_soc_component_get_drvdata(component);
 	tavil->intf_type = wcd9xxx_get_intf_type();
 

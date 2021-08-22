@@ -13190,13 +13190,13 @@ static int tasha_handle_pdata(struct tasha_priv *tasha,
 
 	if (pdata->dmic_sample_rate ==
 	    WCD9XXX_DMIC_SAMPLE_RATE_UNDEFINED) {
-		dev_info(component->dev, "%s: dmic_rate invalid default = %d\n",
+		dev_dbg(component->dev, "%s: dmic_rate invalid default = %d\n",
 			__func__, def_dmic_rate);
 		pdata->dmic_sample_rate = def_dmic_rate;
 	}
 	if (pdata->mad_dmic_sample_rate ==
 	    WCD9XXX_DMIC_SAMPLE_RATE_UNDEFINED) {
-		dev_info(component->dev, "%s: mad_dmic_rate invalid default = %d\n",
+		dev_dbg(component->dev, "%s: mad_dmic_rate invalid default = %d\n",
 			__func__, def_dmic_rate);
 		/*
 		 * use dmic_sample_rate as the default for MAD
@@ -13206,7 +13206,7 @@ static int tasha_handle_pdata(struct tasha_priv *tasha,
 	}
 	if (pdata->ecpp_dmic_sample_rate ==
 	    WCD9XXX_DMIC_SAMPLE_RATE_UNDEFINED) {
-		dev_info(component->dev,
+		dev_dbg(component->dev,
 			 "%s: ecpp_dmic_rate invalid default = %d\n",
 			 __func__, def_dmic_rate);
 		/*
@@ -13219,7 +13219,7 @@ static int tasha_handle_pdata(struct tasha_priv *tasha,
 	if (pdata->dmic_clk_drv ==
 	    WCD9XXX_DMIC_CLK_DRIVE_UNDEFINED) {
 		pdata->dmic_clk_drv = WCD9335_DMIC_CLK_DRIVE_DEFAULT;
-		dev_info(component->dev,
+		dev_dbg(component->dev,
 			 "%s: dmic_clk_strength invalid, default = %d\n",
 			 __func__, pdata->dmic_clk_drv);
 	}
@@ -13929,7 +13929,7 @@ static int tasha_codec_probe(struct snd_soc_component *component)
 
 	snd_soc_component_init_regmap(component, control->regmap);
 
-	dev_info(component->dev, "%s()\n", __func__);
+	dev_dbg(component->dev, "%s()\n", __func__);
 	tasha = snd_soc_component_get_drvdata(component);
 	tasha->intf_type = wcd9xxx_get_intf_type();
 
@@ -14744,7 +14744,7 @@ static int tasha_probe(struct platform_device *pdev)
 		ret = 0;
 	}
 
-	dev_info(&pdev->dev, "%s: Tasha driver probe done\n", __func__);
+	dev_dbg(&pdev->dev, "%s: Tasha driver probe done\n", __func__);
 	return ret;
 
 err_cdc_reg:

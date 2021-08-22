@@ -805,7 +805,7 @@ aw87359_i2c_probe(struct i2c_client *client, const struct i2c_device_id *id)
 
 	ret = sysfs_create_group(&client->dev.kobj, &aw87359_attribute_group);
 	if (ret < 0) {
-		dev_info(&client->dev, "%s error creating sysfs attr files\n",
+		dev_dbg(&client->dev, "%s error creating sysfs attr files\n",
 			__func__);
 	}
 

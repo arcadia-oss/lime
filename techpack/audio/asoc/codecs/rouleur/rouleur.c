@@ -2157,7 +2157,7 @@ static int rouleur_soc_codec_probe(struct snd_soc_component *component)
 			snd_soc_component_get_dapm(component);
 	int ret = -EINVAL;
 
-	dev_info(component->dev, "%s()\n", __func__);
+	dev_dbg(component->dev, "%s()\n", __func__);
 	rouleur = snd_soc_component_get_drvdata(component);
 
 	if (!rouleur)
@@ -2404,7 +2404,7 @@ static void rouleur_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb1_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias1 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias1 DT property not found\n",
 			__func__);
 	}
 
@@ -2417,7 +2417,7 @@ static void rouleur_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb2_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias2 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias2 DT property not found\n",
 			__func__);
 	}
 
@@ -2430,7 +2430,7 @@ static void rouleur_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb3_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias3 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias3 DT property not found\n",
 			__func__);
 	}
 }

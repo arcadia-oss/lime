@@ -310,7 +310,7 @@ static irqreturn_t wcd9xxx_irq_thread(int irq, void *data)
 	}
 
 	if (!wcd9xxx->dev_up) {
-		dev_info_ratelimited(wcd9xxx_res->dev, "wcd9xxx dev not up\n");
+		dev_dbg_ratelimited(wcd9xxx_res->dev, "wcd9xxx dev not up\n");
 		/*
 		 * sleep to not block the core when device is
 		 * not up (slimbus will not be available) to

@@ -102,7 +102,7 @@ static void wcd9xxx_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb1_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias1 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias1 DT property not found\n",
 			__func__);
 	}
 
@@ -129,7 +129,7 @@ static void wcd9xxx_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb2_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias2 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias2 DT property not found\n",
 			__func__);
 	}
 
@@ -156,7 +156,7 @@ static void wcd9xxx_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb3_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias3 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias3 DT property not found\n",
 			__func__);
 	}
 
@@ -177,7 +177,7 @@ static void wcd9xxx_dt_parse_micbias_info(struct device *dev,
 		if (!rc)
 			mb->micb4_mv = prop_val;
 	} else {
-		dev_info(dev, "%s: Micbias4 DT property not found\n",
+		dev_dbg(dev, "%s: Micbias4 DT property not found\n",
 			__func__);
 	}
 
