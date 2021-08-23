@@ -21,7 +21,7 @@ compile() {
     make -j$(nproc --all) O=out \
                 PATH="$TC_DIR/arm64/bin:$TC_DIR/arm/bin:$PATH" \
                 CROSS_COMPILE=$TC_DIR/arm64/bin/aarch64-elf- \
-                CROSS_COMPILE_ARM32=$TC_DIR/arm/bin/arm-eabi- |& tee $LOG
+                CROSS_COMPILE_ARM32=$TC_DIR/arm/bin/arm-eabi- -Wno-format |& tee $LOG
 }
 
 
