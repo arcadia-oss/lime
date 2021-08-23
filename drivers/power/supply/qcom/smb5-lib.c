@@ -33,7 +33,6 @@
 
 #define smblib_dbg(chg, reason, fmt, ...)			\
 	do { } while (0)
-#endif
 
 #define typec_rp_med_high(chg, typec_mode)			\
 	((typec_mode == POWER_SUPPLY_TYPEC_SOURCE_MEDIUM	\
