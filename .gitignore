@@ -42,6 +42,7 @@
 *.tab.[ch]
 *.tar
 *.xz
+kek.py
 Module.symvers
 modules.builtin
 
