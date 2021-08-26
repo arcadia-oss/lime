@@ -228,7 +228,7 @@ struct dentry *msm_vidc_debugfs_init_core(struct msm_vidc_core *core,
 	snprintf(debugfs_name, MAX_DEBUGFS_NAME, "core%d", core->id);
 	dir = debugfs_create_dir(debugfs_name, parent);
 	if (!dir) {
-		dprintk(VIDC_ERR, "Failed to create debugfs for msm_vidc\n");
+//		dprintk(VIDC_ERR, "Failed to create debugfs for msm_vidc\n");
 		goto failed_create_dir;
 	}
 
@@ -447,7 +447,7 @@ struct dentry *msm_vidc_debugfs_init_inst(struct msm_vidc_inst *inst,
 
 	dir = debugfs_create_dir(debugfs_name, parent);
 	if (!dir) {
-		dprintk(VIDC_ERR, "Failed to create debugfs for msm_vidc\n");
+//		dprintk(VIDC_ERR, "Failed to create debugfs for msm_vidc\n");
 		goto failed_create_dir;
 	}
 
