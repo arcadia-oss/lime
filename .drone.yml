@@ -12,9 +12,12 @@ steps:
       - export LANG=C && export LC_ALL=en_US.UTF-8
       - "export token=$TOKEN"
       - "bash build.sh"
-    environment: 
-      TOKEN: 
-        from_secret: token
-    trigger: 
-      branch:
-        - R 
+  - name: Publish
+    image: plugins/github-release
+    settings:
+      api_key:
+         from_secret: github_token
+      files: AnyKernel/CartelProject*
+      title: Beta1
+    when: 
+      event: tag
