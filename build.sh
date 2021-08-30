@@ -21,7 +21,7 @@ compile() {
     make -j$(nproc --all) O=out \
                 PATH="$TC_DIR/arm64/bin:$TC_DIR/arm/bin:$PATH" \
                 CROSS_COMPILE=$TC_DIR/arm64/bin/aarch64-elf- \
-                CROSS_COMPILE_ARM32=$TC_DIR/arm/bin/arm-eabi- -Wno-format |& tee $LOG
+                CROSS_COMPILE_ARM32=$TC_DIR/arm/bin/arm-eabi- -Wno-format Image dtb.img dtbo.img |& tee $LOG
 }
 
 
@@ -38,6 +38,8 @@ modules_install
 zipping() {
     cd AnyKernel || exit 1
     cp ../out/arch/arm64/boot/Image .
+    cp ../out/arch/arm64/boot/dtb.img .
+    cp ../out/arch/arm64/boot/dtbo.img .
     zip -r9 CartelProject-lime-BETA-${TANGGAL}.zip *
     cd ..
 }
