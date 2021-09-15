@@ -18,6 +18,4 @@ steps:
       api_key:
          from_secret: github_token
       files: AnyKernel/CartelProject*
-      title: Beta1
-    when: 
-      event: tag
+      title: Stable1
